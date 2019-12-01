@@ -8,7 +8,7 @@ import retrofit2.Response
 
 class TmdbRepository(private val api: TmdbApi) {
 
-    suspend fun getMovies(page: Int): Response<GenreResponse> {
+    suspend fun getMoviesGenre(page: Int): Response<GenreResponse> {
         return api.genres(BuildConfig.API_KEY, BuildConfig.DEFAULT_LANGUAGE, page)
     }
 
