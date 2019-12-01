@@ -27,3 +27,14 @@ fun visibleOrGone(view: View, visible: Boolean) {
     view.visibility = if (visible) View.VISIBLE else View.GONE
 }
 
+@BindingAdapter("buildBackdropUrl")
+fun buildBackdropUrl(view: ImageView, backdropPath: String?) {
+    backdropPath.let {
+        Glide
+                .with(view.context)
+                .load(BACKDROP_URL + it + "?api_key=" + BuildConfig.API_KEY)
+                .error(R.drawable.ic_image_placeholder)
+                .into(view)
+    }
+}
+

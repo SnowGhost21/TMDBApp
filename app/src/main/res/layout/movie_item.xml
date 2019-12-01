@@ -42,7 +42,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="16dp"
                 android:layout_toEndOf="@id/posterImageView"
                 android:ellipsize="end"
                 android:fontFamily="@font/lato_bold"
@@ -51,20 +51,6 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 tools:text="Titanic" />
-
-            <TextView
-                android:id="@+id/genresTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/titleTextView"
-                android:layout_marginStart="8dp"
-                android:layout_toEndOf="@id/posterImageView"
-                android:ellipsize="end"
-                android:fontFamily="@font/lato_regular"
-                android:maxLines="2"
-                android:text="@{viewModel.genresOverview}"
-                android:textSize="14sp"
-                tools:text="Drama, Romance, Thriller" />
 
             <TextView
                 android:id="@+id/releaseDateTextView"

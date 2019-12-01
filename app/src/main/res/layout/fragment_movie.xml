@@ -60,10 +60,11 @@
                 tools:visibility="visible">
 
                 <ImageView
-                    android:id="@+id/characterImage"
+                    android:id="@+id/moviePoster"
                     android:layout_width="0dp"
-                    android:layout_height="280dp"
-                    android:scaleType="centerCrop"
+                    android:layout_height="400dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_image_placeholder"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -81,7 +82,7 @@
                     android:textColor="@android:color/black"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/characterImage" />
+                    app:layout_constraintTop_toBottomOf="@+id/moviePoster" />
 
                 <TextView
                     android:id="@+id/description"
@@ -98,6 +99,18 @@
                     app:layout_constraintTop_toBottomOf="@+id/descriptionTitle"
                     tools:text="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s" />
 
+                <TextView
+                    android:id="@+id/releaseDate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/lato_regular"
+                    android:textAlignment="center"
+                    android:textSize="16sp"
+                    app:layout_constraintTop_toBottomOf="@id/description"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
 
                 <com.adroitandroid.chipcloud.ChipCloud
                     android:id="@+id/tags"
@@ -110,10 +123,21 @@
                     app:gravity="center"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/description"
+                    app:layout_constraintTop_toBottomOf="@+id/buildBackdropUrl"
                     app:layout_goneMarginTop="16dp"
                     app:selectMode="none"
                     app:textSize="14sp" />
+
+
+                <ImageView
+                    android:id="@+id/buildBackdropUrl"
+                    android:layout_width="0dp"
+                    android:layout_height="300dp"
+                    android:layout_marginTop="8dp"
+                    android:src="@drawable/ic_image_placeholder"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/releaseDate" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

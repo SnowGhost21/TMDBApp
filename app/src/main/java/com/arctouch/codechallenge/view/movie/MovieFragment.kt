@@ -1,5 +1,6 @@
 package com.arctouch.codechallenge.view.movie
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.transition.TransitionInflater
 import android.view.LayoutInflater
@@ -15,6 +16,7 @@ import com.arctouch.codechallenge.R
 import com.arctouch.codechallenge.databinding.FragmentMovieBinding
 import com.arctouch.codechallenge.model.data.Genre
 import com.arctouch.codechallenge.view.MainActivity
+import com.arctouch.codechallenge.view.databinding.buildBackdropUrl
 import com.arctouch.codechallenge.view.databinding.buildPosterUrl
 import org.koin.android.ext.android.inject
 
@@ -41,6 +43,7 @@ class MovieFragment : Fragment() {
                 .inflateTransition(R.transition.default_transition)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val binding = FragmentMovieBinding.inflate(inflater, container, false)
         val movieId = args.movieId
@@ -59,15 +62,21 @@ class MovieFragment : Fragment() {
         viewModel.movie.observe(this, Observer { movie ->
             createTags(binding, movie.genres)
             binding.description.text = movie.title
-            binding.description.text = movie.overview
+            binding.description.text = if (!movie.overview.isNullOrEmpty()) movie.overview else "Descrição não disponível"
             movie.posterPath?.let { image ->
-                buildPosterUrl(binding.characterImage, image)
+                buildPosterUrl(binding.moviePoster, image)
+            }
+            movie.backdropPath?.let {
+                buildBackdropUrl(binding.buildBackdropUrl, it)
+            }
 
+            movie.releaseDate?.let {
+                binding.releaseDate.text = "Lançamento: $it"
             }
         })
 
         ViewCompat.setTransitionName(binding.coordinator, movieId.toString())
-        ViewCompat.setTransitionName(binding.characterImage, "image_$movieId")
+        ViewCompat.setTransitionName(binding.moviePoster, "image_$movieId")
 
 
         return binding.root
